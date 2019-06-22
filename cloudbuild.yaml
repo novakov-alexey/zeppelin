@@ -5,7 +5,7 @@ steps:
       - -c
       - |
         ./dev/change_scala_version.sh 2.11
-        mvn clean package -Pspark-2.3 -Pscala-2.11 -DskipTests -Pbuild-distr -Phadoop2     
+        mvn clean package -DskipTests -Pbuild-distr -Pspark-2.3 -Pscala-2.11 -Phadoop2     
 
   - name: debian
     entrypoint: bash
@@ -19,7 +19,7 @@ steps:
     args:
       - -c
       - |
-        cd scripts/docker/zeppelin/bin/ && docker build -t gcr.io/$PROJECT_ID/zeppelin:0.9.0-SNAPSHOT         
+        cd scripts/docker/zeppelin/bin/ && docker build -t gcr.io/$PROJECT_ID/zeppelin:0.9.0-SNAPSHOT .         
 
 tags: ['cloud-build-spark']
 images: ['gcr.io/$PROJECT_ID/zeppelin']
